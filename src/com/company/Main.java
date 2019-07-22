@@ -11,27 +11,36 @@ public class Main {
         addNewUser();
 
     }
+
+
     private static void addNewUser() throws IOException{
 
         Scanner input = new Scanner(System.in);
-        System.out.print("Welcome aboard new user!\n ");
+        System.out.print("Welcome aboard new user!\n");
 
         System.out.print("Please let me know your first name: ");
-        String firstName = input.nextLine();
-        System.out.print("Great"+ firstName +",");  //to write the first name of the user
+        String firstName = input.nextLine();           //to write the first name of the user
+        System.out.print("Great "+ firstName +",");
 
         System.out.print(" now please enter your last name:");
         String lastName = input.nextLine(); // to write the last name of the user
 
         System.out.print("Done! ");
         System.out.print("\nNice to meet you " +firstName+" "+ lastName);
-        String fileName = firstName + lastName + ".txt";
-        File file = new File("C:/Users/karme/OneDrive/Desktop/Nots/"+fileName);// creat the file in the written path
+        String fileName = firstName .concat( lastName .concat( ".txt")); //The file name consists of the first and last name
+        File file = new File("C:\\Users\\karme\\OneDrive\\Desktop\\notes\\"+fileName);// create the file in the written path
+        boolean isFileCreated = file.createNewFile();
+
+        if(isFileCreated)
+           System.out.print("\nThe file created Successfully!");
+        else
+            System.out.print("There is a Problem!");
+
         System.out.print("\n<Click Enter to return to main menu>");
-        //boolean isFileCreated = file.createNewFile();  // New change
-        //System.out.print("Was the file created? -- ");
-        //System.out.println(isFileCreated);
+    }
+
+
+
 
     }
 
-}
