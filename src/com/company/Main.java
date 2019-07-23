@@ -1,4 +1,5 @@
 package com.company;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
@@ -8,7 +9,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         //create the menu here
-        addNewUser();
+     //   addNewUser();
+        viewNotes();
 
     }
     private static void addNewUser() throws IOException{
@@ -28,10 +30,20 @@ public class Main {
         String fileName = firstName + lastName + ".txt";
         File file = new File("C:/Users/karme/OneDrive/Desktop/Nots/"+fileName);// creat the file in the written path
         System.out.print("\n<Click Enter to return to main menu>");
-        //boolean isFileCreated = file.createNewFile();  // New change
+        boolean isFileCreated = file.createNewFile();
         //System.out.print("Was the file created? -- ");
         //System.out.println(isFileCreated);
 
     }
+    private static void viewNotes() throws IOException{
+        File f = new File("C:/Users/karme/OneDrive/Desktop/Nots/");
+        File[] matchingFiles = f.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.startsWith("temp") && name.endsWith("txt");
+            }
+        });
 
+
+
+    }
 }
